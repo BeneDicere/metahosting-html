@@ -3,8 +3,9 @@
 {% block content %}
 <div class="container">
   <div class="jumbotron">
+      <div class="alert alert-warning"><span style="color:red"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span></span>&nbsp;Warning - this service is still in development! Instances are for testing only.</div>
       {% include 'flash.html' %}
-{% if types.iteritems %}
+{% if types %}
     <h3>Create instance</h3>
         <form class="form-inline" role="form" action="" method="post">
             <div class="form-group">
