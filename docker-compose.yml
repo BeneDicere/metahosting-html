@@ -30,15 +30,6 @@ worker2:
   links:
     - db
     - messaging
-  environment:
-    - DB_LOCAL_COLLECTION=dummy2-local-instances
-    - WORKER_NAME=dummy2
-    - WORKER_DESCRIPTION=dummyworker 2
-worker3:
-  image: benedicere/metahosting-worker
-  links:
-    - db
-    - messaging
   volumes:
     - /var/run/docker.sock:/var/run/docker.sock
   environment:
@@ -53,23 +44,6 @@ worker3:
     - INSTANCE_ENDPOINTS=http://127.0.0.1/exist
     - INSTANCE_ENVIRONMENT__EXIST_MEMORY=512
     - INSTANCE_ENVIRONMENT__EXIST_ADMIN_PASSWORD=
-worker4:
-  image: benedicere/metahosting-worker
-  links:
-    - db
-    - messaging
-  volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
-  environment:
-    - DB_LOCAL_COLLECTION=voyant-local-instances
-    - WORKER_NAME=voyant
-    - WORKER_DESCRIPTION=voyant text analyse
-    - DOCKER_SOCKET=unix:///var/run/docker.sock
-    - WORKER_IMAGE=dariah/voyant:latest
-    - WORKER_TYPE=workers.docker_worker.DockerWorker
-    - WORKER_PUBIP=192.168.99.100
-    - WORKER_PUBPORTS=7010:7020
-    - INSTANCE_ENDPOINTS=http://localhost:8080
 facade:
    build: .
    command: /app/run.py
